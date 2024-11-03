@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gallerie Numerique</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Gallerie Numérique de Jus <img class="emoji" src="sprites/jusDePomme.png" alt="Emoji jus de Pomme"></h1>
+    </header>
+    
+    <div class="gallery">
+        <div class="thumbnail" onclick="openModal(this)">
+            <img src="./img/img.jpg" alt="Image 1">
+        </div>
+        <div class="thumbnail" onclick="openModal(this)">
+            <img src="./img/img2.jpg" alt="Image 2">
+        </div>
+        <div class="thumbnail" onclick="openModal(this)">
+            <img src="./img/img.jpg" alt="Image 3">
+        </div>
+    </div>
+    
+    
+    <!-- Popup Modal -->
+    <!-- Popup Modal -->
+    <div id="myModal" class="modal" onclick="closeModal()">
+        <span class="close">&times;</span>
+        <img class="modal-content" id="img01">
+        <div id="caption" class="caption"></div>
+    </div>
+    
+    
+    <!-- Popup Modal -->
+    <div id="myModal" class="modal" onclick="closeModal()">
+        <span class="close">&times;</span>
+        <img class="modal-content" id="img01">
+        <div id="caption" class="caption"></div>
+    </div>
+    
+    <footer>
+        <p>&copy; 2024 Jus <img class="emoji" src="sprites/jusDePomme.png" alt="Emoji jus de Pomme"></p>
+        <p>Développé par Kactus</p>
+    </footer>
+    <script src="main.js"></script>
+</body>
+</html>

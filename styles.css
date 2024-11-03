@@ -1,0 +1,112 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body, html {
+    height: 100%;
+}
+
+body {
+    display: flex;              /* Utilise Flexbox pour la mise en page */
+    flex-direction: column;     /* Aligne les enfants (header, galerie, footer) en colonne */
+    min-height: 100vh;         /* Prend au moins toute la hauteur de l'écran */
+}
+
+header {
+    background-color: #222;
+    color: white;
+    padding: 20px;
+    text-align: center;
+}
+
+footer {
+    margin-top: auto;          /* Force le footer à rester en bas */
+    background-color: #222;
+    color: white;
+    text-align: center;
+    padding: 10px;
+    width: 100%;               /* S'assure que le footer occupe toute la largeur */
+}
+
+img.emoji {
+    width: 1.2em;
+    height: 1.2em;
+    vertical-align: -0.15em;
+}
+
+.gallery {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 15px;
+    padding: 20px;
+}
+
+.thumbnail {
+    width: 150px; /* Largeur fixe de la tuile */
+    height: 150px; /* Hauteur fixe pour créer un format carré */
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    overflow: hidden; /* Masque les débordements pour garder la forme carrée */
+}
+
+.thumbnail img {
+    width: 100%; /* Prend toute la largeur de la tuile */
+    height: 100%; /* Prend toute la hauteur de la tuile */
+    object-fit: cover; /* Ajuste l'image pour qu'elle remplisse le conteneur sans déformer */
+    object-position: center; /* Centre l'image si elle est recadrée */
+}
+
+
+.thumbnail:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+.modal {
+    display: none; /* Masqué par défaut */
+    position: fixed;
+    z-index: 999;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.9);
+}
+
+.modal-content {
+    margin: 15vh auto 0;
+    display: block;
+    max-width: 70%;    /* Limite la largeur maximale à 90% de la fenêtre */
+    max-height: 70%;   /* Limite la hauteur maximale à 90% de la fenêtre */
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+}
+
+
+.close {
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    color: #fff;
+    font-size: 40px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: color 0.2s;
+}
+
+.close:hover {
+    color: #ff4081; /* Changer la couleur au survol */
+}
+
+.caption {
+    text-align: center;
+    color: #fff;
+    padding: 15px;
+    font-size: 1.2em;
+}
