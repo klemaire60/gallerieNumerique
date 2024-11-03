@@ -8,27 +8,20 @@
 </head>
 <body>
     <header>
-        <h1>Gallerie Numérique de Jus <img class="emoji" src="sprites/jusDePomme.png" alt="Emoji jus de Pomme"></h1>
+        <h1 class="bg-color">Gallerie Numérique de Jus <img class="emoji" class="bg-color" src="sprites/jusDePomme.png" alt="Emoji jus de Pomme"></h1>
     </header>
 
     <div class="gallery">
-        <div class="thumbnail" onclick="openModal(this)">
-            <img src="./img/img.jpg" alt="Image 1">
+        <div class="choiceCard" id="numericArt">
+            <p>Art Numérique</p>
         </div>
-        <div class="thumbnail" onclick="openModal(this)">
-            <img src="./img/img2.jpg" alt="Image 2">
+        <div class="choiceCard" id="draws">
+            <p>Dessins</p>
         </div>
-        <div class="thumbnail" onclick="openModal(this)">
-            <img src="./img/img.jpg" alt="Image 3">
+        <div class="choiceCard" id="all">
+            <p>Tout</p>
         </div>
     </div>
-    
-    <div id="myModal" class="modal" onclick="closeModal()">
-        <span class="close">&times;</span>
-        <img class="modal-content" id="img01">
-        <div id="caption" class="caption"></div>
-    </div>
-    
     <footer>
         <p>&copy; 2024 Jus <img class="emoji" src="sprites/jusDePomme.png" alt="Emoji jus de Pomme"></p>
         <p>Développé par Kactus</p>
