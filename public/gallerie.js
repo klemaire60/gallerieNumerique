@@ -1,21 +1,35 @@
 // Gallerie.html
+const params = new URLSearchParams(window.location.search);
 
-function loadImages(category) {
-    if(category == 'numeric')
-    {
+const category = params.get('view');
+loadImages(category);
+
+async function loadImages(category) {
+    try {
+        const url = new URL(`/images`, `http://172.25.121.6:3000`);
         
-    } 
-    else  if(category == 'draws')
-    {
+        url.searchParams.append('view', category);
         
-    } 
-    else if(category == 'all')
-    {
-
-    } 
-    else 
-    {
-
+        const response = await fetch(url);
+        
+        if (!response.ok) {
+            throw new Error('Erreur lors de la récupération des images');
+        }
+        
+        const data = await response.json();
+        var imagesHTML;
+        
+        data.images.forEach(image => {
+            imagesHTML += `
+                <div class="thumbnail" onclick="openModal(this)">
+                    <img src="${image}" alt="Image">
+                </div>
+            `;
+        });
+        
+        document.getElementById('gallery').innerHTML = imagesHTML;
+    } catch (error) {
+        console.error(error);
     }
 }
 
