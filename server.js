@@ -44,8 +44,12 @@ app.get('/images', async (req, res) => {
 });
 
 app80.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, 'index.html'));  // Sert index.html pour app80
+    return res.sendFile(path.join(__dirname, 'index.html'));
 });
+
+app80.get('/gallerie.html', (req, res) => {
+    return res.sendFile(path.join(__dirname, 'gallerie.html'))
+})
 
 app.listen(config.port, () => {
     console.log("Serveur en écoute sur le port", config.port);

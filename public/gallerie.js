@@ -17,7 +17,7 @@ async function loadImages(category) {
         }
         
         const data = await response.json();
-        var imagesHTML;
+        var imagesHTML = ``;
         
         data.images.forEach(image => {
             imagesHTML += `
