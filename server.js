@@ -1,7 +1,12 @@
 const express = require("express");
-const fs = require("fs").promises;
-const path = require("path");
 const cors = require("cors");
+const rateLimit = require("express-rate-limit");
+const bodyParser = require("body-parser");
+const bcrypt = require("bcrypt");
+const cookieParser = require("cookie-parser");
+const jwt = require("jsonwebtoken")
+const path = require("path");
+const fs = require("fs").promises;
 
 const config = require("./config.json");
 const connection = require('./db')
@@ -11,6 +16,8 @@ const app80 = express();
 
 app.use(cors());
 app.use(express.static('public'));
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 
 app80.use(cors());
 app80.use(express.static('public'));
@@ -34,7 +41,7 @@ app.post('/login', (req, res) => {
         return res.status(400).json({ message: errorMessage });
     }
 
-    const sqlLogin = 'SELECT password FROM user WHERE usernmae = ?';
+    const sqlLogin = 'SELECT password FROM users WHERE username = ?';
 
     connection.query(sqlLogin, [username], (err, results) => {
         if(err) {
@@ -46,8 +53,14 @@ app.post('/login', (req, res) => {
         {
             return res.status(401).json({ message: "Aucun compte trouvé avec ce nom d'utilisateur"});
         }
+
+        const isPasswordValid = bcrypt.compareSync(password, results[0].password);
+
+        if(!isPasswordValid) {
+            return res.status(401).json({ message : "Mot de passe invalide" })    
+        }
         
-        let token = jwt.sign({ mail }, config.jwtKey);
+        let token = jwt.sign({ username }, config.jwtKey);
         res.cookie('userToken', token, {
             httpOnly: true,
             secure: false,
@@ -84,6 +97,11 @@ app.get('/images', async (req, res) => {
         console.log(err);
         return res.status(500).json({ error: "Erreur lors du chargement des images" });
     }
+});
+
+app.post('/uploadImages', (req, res) => {
+
+
 });
 
 app80.get('/', (req, res) => {

@@ -1,9 +1,10 @@
 {
 	"port": 3000,
+	"jwtKey" : "Key",
 	"database" : {
-		"host" : "",
-		"user": "",
-		"password": "",
-		"database": ""
+		"host" : "localhost",
+		"user": "root",
+		"password": "root",
+		"database": "gallerieNumerique"
 	}
 }
