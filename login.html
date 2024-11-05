@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gallerie Numerique</title>
+    <link rel="stylesheet" href="./styles.css">
+    <!--Lien temporaire Live server-->
+    <link rel="stylesheet" href="./public/styles.css">
+</head>
+<body>
+    <header>
+        <h1 class="bg-color">Se connecter</h1>
+        <div class="menu-container">
+            <div class="menu-icon">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </header>
+    <div class="sideBar">
+        <p class="sideBarText">Revenir à l'acceuil</p>
+        <p class="sideBarText"></p>
+        <p class="sideBarText"></p>
+    </div>
+    <div class="login-box">        
+        <div id="login-form">
+            <div class="input-group">
+                <label for="login-username">Nom d'utilisateur</label>
+                <input type="text" id="login-username" name="username" required>
+            </div>
+            <div class="input-group">
+                <label for="login-password">Mot de passe</label>
+                <input type="password" id="login-password" name="password" required>
+            </div>
+            <button type="submit" class="btn" id="login-button">Se connecter</button>
+        </div>
+        
+        <div id="responseDiv"></div>
+    </div>
+    
+    <footer>
+        <p>&copy; 2024 Jus <img class="emoji" src="sprites/jusDePomme.png" alt="Emoji jus de Pomme"></p>
+        <p>Développé par Kactus</p>
+    </footer>
+    <script src="login.js"></script>
+</body>
+</html>

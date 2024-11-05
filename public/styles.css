@@ -69,9 +69,10 @@ img.emoji {
     height: 1.2em;
     vertical-align: -0.15em;
     background-color: #111;
+    font-size: medium;
 }
 
-.gallery {
+.gallery, .login-box {
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
@@ -182,4 +183,65 @@ footer p {
     text-align: center;
     padding: 10px;
     width: 100%;
+}
+
+.sideBar {
+    display: none;
+}
+
+/*
+.gallery, .login-box {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 15px;
+    padding: 20px;
+    flex: 1;
+}
+*/
+
+.login-box {
+    padding: 40px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    align-items: center;
+    color: black;
+}
+
+.login-box h2 {
+    margin-bottom: 20px;
+}
+
+.input-group {
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+.input-group label {
+    font-size: 20px;
+    margin-bottom: 5px;
+    display: block;
+}
+
+.input-group input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+.btn {
+    width: 100%;
+    padding: 10px;
+    background-color: #007BFF; /*A voir*/
+    border: none;
+    border-radius: 5px;
+    color: #fff;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.btn:hover {
+    background-color: #0056b3; /*A voir en fonction du bouton de base*/
 }

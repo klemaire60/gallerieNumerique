@@ -49,7 +49,7 @@ app.post('/login', (req, res) => {
             return res.status(500).json({message : "Erreur lors de la connexion"});
         }
 
-        if(results.lenght == 0) 
+        if(results.length == 0) 
         {
             return res.status(401).json({ message: "Aucun compte trouvé avec ce nom d'utilisateur"});
         }
@@ -66,7 +66,7 @@ app.post('/login', (req, res) => {
             secure: false,
             maxAge: 43200000
         })
-        return res.status(200).json({ message: "Connexion Réussie"});
+        return res.redirect('../admin.html');
     })
 })
 
@@ -109,7 +109,11 @@ app80.get('/', (req, res) => {
 });
 
 app80.get('/gallerie.html', (req, res) => {
-    return res.sendFile(path.join(__dirname, 'gallerie.html'))
+    return res.sendFile(path.join(__dirname, 'gallerie.html'));
+})
+
+app80.get('/login.html', (req, res) => {
+    return res.sendFile(path.join(__dirname, 'login.html'));
 })
 
 app.listen(config.port, () => {
