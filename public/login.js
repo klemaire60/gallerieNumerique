@@ -20,7 +20,6 @@ button.addEventListener('click', async (event) => {
         const data = await response.json();
 
         responseDiv.innerHTML = data.message;
-
     } catch (error) {
         console.error('Erreur lors de la requête de connexion : \n', error);
     }

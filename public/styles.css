@@ -72,7 +72,7 @@ img.emoji {
     font-size: medium;
 }
 
-.gallery, .login-box {
+.gallery, .login-box, .admin-box {
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
@@ -189,17 +189,6 @@ footer p {
     display: none;
 }
 
-/*
-.gallery, .login-box {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 15px;
-    padding: 20px;
-    flex: 1;
-}
-*/
-
 .login-box {
     padding: 40px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -244,4 +233,163 @@ footer p {
 
 .btn:hover {
     background-color: #0056b3; /*A voir en fonction du bouton de base*/
+}
+
+.admin-choices {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 40%;
+    cursor: pointer;
+    background: rgb(21, 29, 63);
+    color: white;
+    font-size: 5rem;
+    text-align: center;
+}
+
+.uploadForm * {
+    background-color: #f9f9f9;
+}
+
+.uploadForm {
+    width: 400px;
+    height: fit-content;
+    margin: 30px auto;
+    padding: 20px;
+    border: 2px solid #ccc;
+    border-radius: 10px;
+    background-color: #f9f9f9;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.uploadForm legend {
+    font-size: 1.4em;
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+.uploadForm .radio-group {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.uploadForm input[type="radio"] {
+    margin: 0;
+    accent-color: #007BFF;
+    cursor: pointer;
+}
+
+.uploadForm label {
+    font-size: 1em;
+    color: #555;
+    cursor: pointer;
+}
+
+.uploadForm input[type="file"] {
+    margin-top: 10px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #fff;
+    font-size: 0.9em;
+    cursor: pointer;
+    width: 100%;
+}
+
+.uploadForm input[type="file"]::file-selector-button {
+    background-color: #007BFF;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 8px 15px;
+    font-size: 0.9em;
+    cursor: pointer;
+}
+
+.uploadForm input[type="file"]::file-selector-button:hover {
+    background-color: #0056b3;
+}
+
+.uploadForm button {
+    width: 45%;
+}
+
+.button-group {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+.backButton:hover, 
+.sendButton:hover {
+    background-color: #111;
+    color: #f9f9f9;
+    cursor: pointer;
+}
+
+.createUserForm {
+    width: 400px;
+    height: fit-content;
+    margin: 30px auto;
+    padding: 20px;
+    border: 2px solid #ccc;
+    border-radius: 10px;
+    background-color: #f9f9f9;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    display: none;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.createUserForm * {
+    background-color: #f9f9f9;
+}
+
+.createUserForm legend {
+    font-size: 1.4em;
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+.createUserForm label {
+    font-size: 1em;
+    color: #555;
+}
+
+.createUserForm input[type="text"] {
+    padding: 10px;
+    font-size: 1em;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 100%;
+}
+
+.createUserForm .button-group {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+.createUserForm .backButton,
+.createUserForm .sendButton {
+    width: 45%;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    font-size: 1em;
+    color: #fff;
+    cursor: pointer;
+    background-color: #007BFF;
+}
+
+.createUserForm .backButton:hover,
+.createUserForm .sendButton:hover {
+    background-color: #0056b3;
 }

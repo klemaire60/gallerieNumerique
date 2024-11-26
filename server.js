@@ -108,6 +108,10 @@ app80.get('/', (req, res) => {
     return res.sendFile(path.join(__dirname, 'index.html'));
 });
 
+app80.get('/index.html', (req, res) => {
+    return res.sendFile(path.join(__dirname, 'index.html'));
+});
+
 app80.get('/gallerie.html', (req, res) => {
     return res.sendFile(path.join(__dirname, 'gallerie.html'));
 })

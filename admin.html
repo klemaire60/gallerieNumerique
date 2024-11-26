@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gallerie Numerique</title>
+    <link rel="stylesheet" href="./styles.css">
+    <!--Lien temporaire Live server-->
+    <link rel="stylesheet" href="./public/styles.css">
+</head>
+<body>
+    <header>
+        <h1 class="bg-color">Espace de Jus <img class="emoji" src="sprites/jusDePomme.png" alt="Emoji jus de Pomme"></h1>
+        <div class="menu-container" onclick="showShidebar()">
+            <div class="menu-icon">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </header>
+    <div class="sideBar">
+        <p class="sideBarText">Revenir à l'accueil</p>
+        <p class="sideBarText">Déconnexion</p>
+    </div>
+    <div class="admin-box" >
+        <div class="admin-choices" id="uploadImagesChoice" onclick="displayMenu('upload')">Ajouter un nouveau dessin</div>
+        <div class="admin-choices" id="createUserChoice" onclick="displayMenu('user')">Créer un nouvel utilisateur</div>
+        <div class="uploadForm" id="uploadForm">
+            <legend>Quelle est la catégorie de ce que vous ajoutez ?</legend>
+            <div class="radio-group">
+                <input type="radio" id="numericArtChoice" name="artType" value="numericArt">
+                <label for="numericArtChoice">Art Numérique</label>
+            </div>
+            <div class="radio-group">
+                <input type="radio" id="drawingChoice" name="artType" value="drawing">
+                <label for="drawingChoice">Dessin</label>
+            </div>
+            <input type="file" id="artFile" name="artFile" accept="image/*" multiple>
+            <div class="button-group">
+                <button class="backButton" onclick="back()">Retour</button>
+                <button class="sendButton" onclick="sendForm('upload')">Envoyer</button>
+            </div>
+            <p class="responseText" id="responseText"></p>
+        </div>
+        
+        <div class="createUserForm" id="createUserForm">
+            <legend>Entrez les informations du nouvel utilisateur à créer</legend>
+            <label for="username"><b>Nom d'utilisateur</b></label>
+            <input type="text" name="username">
+            <label for="password"><b>Mot de passe</b></label>
+            <input type="text" name="password">
+            <div class="button-group">
+                <button class="backButton" onclick="back()">Retour</button>
+                <button class="sendButton" onclick="sendForm('user')">Envoyer</button>
+            </div>
+        </div>
+    </div>
+    <footer>
+        <p>&copy; 2024 Jus <img class="emoji" src="sprites/jusDePomme.png" alt="Emoji jus de Pomme"></p>
+        <p>Développé par Kactus</p>
+    </footer>
+    <script src="admin.js"></script>
+    <script src="./public/admin.js"></script>
+</body>
+</html>
