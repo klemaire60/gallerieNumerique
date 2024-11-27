@@ -11,7 +11,7 @@
 <body>
     <header>
         <h1 class="bg-color">Espace de Jus <img class="emoji" src="sprites/jusDePomme.png" alt="Emoji jus de Pomme"></h1>
-        <div class="menu-container" onclick="showShidebar()">
+        <div class="menu-container" onclick="showSidebar()">
             <div class="menu-icon">
                 <span></span>
                 <span></span>
@@ -19,10 +19,12 @@
             </div>
         </div>
     </header>
-    <div class="sideBar">
-        <p class="sideBarText">Revenir à l'accueil</p>
-        <p class="sideBarText">Déconnexion</p>
+    <div class="sidebar" id="sidebar">
+        <a class="sideBarText" onclick="closeSidebar()" href="./index.html">Revenir à l'accueil</a>
+        <a class="sideBarText" onclick="closeSidebar()">Déconnexion</a>
     </div>
+    <div class="overlay" id="overlay" onclick="closeSidebar()"></div>
+    
     <div class="admin-box" >
         <div class="admin-choices" id="uploadImagesChoice" onclick="displayMenu('upload')">Ajouter un nouveau dessin</div>
         <div class="admin-choices" id="createUserChoice" onclick="displayMenu('user')">Créer un nouvel utilisateur</div>

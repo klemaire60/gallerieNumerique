@@ -8,10 +8,8 @@
 </head>
 <body>
     <header>
-        <h1 class="bg-color">Gallerie Numérique de Jus 
-            <img class="emoji" class="bg-color" src="sprites/jusDePomme.png" alt="Emoji jus de Pomme">
-        </h1>
-        <div class="menu-container">
+        <h1 class="bg-color">Espace de Jus <img class="emoji" src="sprites/jusDePomme.png" alt="Emoji jus de Pomme"></h1>
+        <div class="menu-container" onclick="showSidebar()">
             <div class="menu-icon">
                 <span></span>
                 <span></span>
@@ -19,11 +17,11 @@
             </div>
         </div>
     </header>
-    <div class="sideBar">
-        <p class="sideBarText">Revenir à l'acceuil</p>
-        <p class="sideBarText"></p>
-        <p class="sideBarText"></p>
+    <div class="sidebar" id="sidebar">
+        <a class="sideBarText" onclick="closeSidebar()" href="./index.html">Revenir à l'accueil</a>
     </div>
+    <div class="overlay" id="overlay" onclick="closeSidebar()"></div>
+    
     <div class="gallery" id="gallery">
         
     </div>

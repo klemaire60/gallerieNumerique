@@ -67,3 +67,21 @@ function back() {
     uploadForm.style.display = "none";
     createUserForm.style.display = "none";
 }
+
+function showSidebar() {
+    const sidebar = document.getElementById("sidebar");
+    const overlay = document.getElementById("overlay");
+
+    // Afficher la sidebar et l'overlay
+    sidebar.style.display = 'flex';
+    overlay.style.display = 'block';
+}
+
+function closeSidebar() {
+    const sidebar = document.getElementById("sidebar");
+    const overlay = document.getElementById("overlay");
+
+    // Masquer la sidebar et l'overlay
+    sidebar.style.display = 'none';
+    overlay.style.display = 'none';
+}
