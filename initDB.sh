@@ -1,6 +1,6 @@
 mysql -u root -p <<EOF
 
-CREATE DATABASE gallerieNumerique2;
+CREATE DATABASE gallerieNumerique;
 
 USE gallerieNumerique2;
 

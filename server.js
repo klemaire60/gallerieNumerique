@@ -27,6 +27,49 @@ function containsInvalidChars(input) {
     return forbiddenChars.test(input); // Renvoie true si un des caractères est trouvé
 }
 
+app.post('/addUser', (req,res) => {
+    const {username, password} = req.body;
+
+    let errorMessage = '';
+
+    if(!username) errorMessage += "Le nom d'utilisateur est manquant.";
+    if(!password) errorMessage += "Le mot de passe est manquant.";
+    if(username && containsInvalidChars(username)) errorMessage += "Le nom d'utilisateur contient des caractères interdits";
+    if(password && containsInvalidChars(password)) errorMessage += "Le mot de passe contient des caractères interdits.";
+
+    if(errorMessage !== '') return res.status(400).json({ message : errorMessage });
+
+    const sqlVerif = 'SELECT username FROM users WHERE username = ?'
+    
+    connection.query(sqlVerif, [username], (err, results) => {
+        if(err) {
+            console.error('Erreur lors de la vérification de l\'utilisateur\n Erreur : \n', err);
+            return res.status(500).json({ message : "Erreur lors de l'ajout de l'utilsateut, veuillez réessayer" });
+        }
+
+        if(results.length !== 0) return res.status(401).json({ message: "Ce nom d'utilisateur est déjà utilisé" });
+
+        const sqlAddUser = 'INSERT INTO users (username, password) VALUES (?,?)'
+
+            bcrypt.hash(password, 10, (hashErr, hashedPassword) => {
+
+                if(hashErr) {
+                    console.error('Erreur lors du hachage du mot de passe\nErreur:\n', hashErr);
+                    return res.status(500).json({ message: "Erreur lors de l'ajout de l'utilisateur, veuillez  réessayer" });
+                }
+
+                connection.query(sqlAddUser, [username, hashedPassword], (err) => {
+                    if(err) {
+                        console.error('Erreur lors de la requête SQL addUser\nErreur:\n',err);
+                        return res.status(500).json({ message: "Erreur lors de l'ajout de l'utilisateur veuillez réessayer" });
+                    }
+
+                    res.status(200).json({ message: "Utilisateur créé avec succès !"});
+                })
+            });
+    })
+})
+
 app.post('/login', (req, res) => {
     const {username, password} = req.body;
 
@@ -37,9 +80,7 @@ app.post('/login', (req, res) => {
     if(username && containsInvalidChars(username)) errorMessage += "Le nom d'utilisateur contient des caractères interdit. ";
     if(password && containsInvalidChars(password)) errorMessage += "Le mot de passe contient des caractères interdits. ";
 
-    if (errorMessage !== '') {
-        return res.status(400).json({ message: errorMessage });
-    }
+    if (errorMessage !== '') return res.status(400).json({ message: errorMessage });
 
     const sqlLogin = 'SELECT password FROM users WHERE username = ?';
 
@@ -49,10 +90,7 @@ app.post('/login', (req, res) => {
             return res.status(500).json({message : "Erreur lors de la connexion"});
         }
 
-        if(results.length == 0) 
-        {
-            return res.status(401).json({ message: "Aucun compte trouvé avec ce nom d'utilisateur"});
-        }
+        if(results.length == 0) return res.status(401).json({ message: "Aucun compte trouvé avec ce nom d'utilisateur"});
 
         const isPasswordValid = bcrypt.compareSync(password, results[0].password);
 
@@ -118,6 +156,10 @@ app80.get('/gallerie.html', (req, res) => {
 
 app80.get('/login.html', (req, res) => {
     return res.sendFile(path.join(__dirname, 'login.html'));
+})
+
+app80.get('/admin.html', (req, res) => {
+    return res.sendFile(path.join(__dirname, 'admin.html'));
 })
 
 app.listen(config.port, () => {
