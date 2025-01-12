@@ -104,7 +104,7 @@ app.post('/login', (req, res) => {
             secure: false,
             maxAge: 43200000
         })
-        return res.redirect('../admin.html');
+        return res.status(200).json({ message: 'Connexion réussie' });
     })
 })
 

@@ -85,3 +85,8 @@ function closeSidebar() {
     sidebar.style.display = 'none';
     overlay.style.display = 'none';
 }
+
+function disconnect() {
+    document.cookie = `userToken=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;`;
+    console.log('ok')
+}
