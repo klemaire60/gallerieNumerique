@@ -17,6 +17,10 @@
             </div>
         </div>
     </header>
+    <div class="sidebar" id="sidebar">
+        <a class="sideBarText" onclick="closeSidebar()" href="./admin.html">Se connecter en admin</a>
+    </div>
+    <div class="overlay" id="overlay" onclick="closeSidebar()"></div>
     
     <div class="gallery">
         <div class="choiceCard" id="numericArt" onclick="window.location.href = 'gallerie.html?view=numeric'">
@@ -33,5 +37,6 @@
         <p>&copy; 2024 Jus <img class="emoji" src="sprites/jusDePomme.png" alt="Emoji jus de Pomme"></p>
         <p>Développé par Kactus</p>
     </footer>
+    <script src="index.js"></script>
 </body>
 </html>
