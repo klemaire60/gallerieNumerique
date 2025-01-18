@@ -68,6 +68,10 @@ function back() {
     createUserForm.style.display = "none";
 }
 
+function disconnect() {
+    document.cookie = `userToken=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;`;
+}
+
 function showSidebar() {
     const sidebar = document.getElementById("sidebar");
     const overlay = document.getElementById("overlay");
@@ -75,6 +79,8 @@ function showSidebar() {
     // Afficher la sidebar et l'overlay
     sidebar.style.display = 'flex';
     overlay.style.display = 'block';
+
+    document.addEventListener('keydown', handleEscape);
 }
 
 function closeSidebar() {
@@ -84,9 +90,12 @@ function closeSidebar() {
     // Masquer la sidebar et l'overlay
     sidebar.style.display = 'none';
     overlay.style.display = 'none';
+    document.removeEventListener('keydown', handleEscape);
 }
 
-function disconnect() {
-    document.cookie = `userToken=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;`;
-    console.log('ok')
+function handleEscape(e) {
+    if (e.key === 'Escape') {
+        closeSidebar();
+    }
+    console.log(e.key)
 }

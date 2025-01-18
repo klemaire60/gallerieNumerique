@@ -33,6 +33,8 @@ function showSidebar() {
     // Afficher la sidebar et l'overlay
     sidebar.style.display = 'flex';
     overlay.style.display = 'block';
+
+    document.addEventListener('keydown', handleEscape);
 }
 
 function closeSidebar() {
@@ -42,4 +44,12 @@ function closeSidebar() {
     // Masquer la sidebar et l'overlay
     sidebar.style.display = 'none';
     overlay.style.display = 'none';
+    document.removeEventListener('keydown', handleEscape);
+}
+
+function handleEscape(e) {
+    if (e.key === 'Escape') {
+        closeSidebar();
+    }
+    console.log(e.key)
 }

@@ -36,12 +36,10 @@ async function loadImages(category) {
 function openModal(thumbnail) {
     var modal = document.getElementById("myModal");
     var img = modal.querySelector("#img01");
-    //var captionText = modal.querySelector("#caption");
     
     var imgElement = thumbnail.querySelector("img");
     
     img.src = imgElement.src;
-    //captionText.innerHTML = imgElement.alt;
     
     modal.style.display = "block";
     
@@ -51,18 +49,18 @@ function openModal(thumbnail) {
         var windowHeight = window.innerHeight;
         
         var marginTop = Math.abs((windowHeight - imgHeight) / 2);
-        console.log(imgHeight)
-        console.log(windowHeight)
-        console.log(marginTop)
         
         // Appliquer la marge calculée à l'image
         img.style.marginTop = marginTop + "px";
+        
+        document.addEventListener('keydown', handleEscape);
     };
 }
 
 function closeModal() {
     var modal = document.getElementById("myModal");
-    modal.style.display = "none"; 
+    modal.style.display = "none";
+    document.removeEventListener('keydown', handleEscape);
 }
 
 function showSidebar() {
@@ -72,6 +70,8 @@ function showSidebar() {
     // Afficher la sidebar et l'overlay
     sidebar.style.display = 'flex';
     overlay.style.display = 'block';
+
+    document.addEventListener('keydown', handleEscape);
 }
 
 function closeSidebar() {
@@ -81,4 +81,23 @@ function closeSidebar() {
     // Masquer la sidebar et l'overlay
     sidebar.style.display = 'none';
     overlay.style.display = 'none';
+    document.removeEventListener('keydown', handleEscape);
+}
+
+function handleEscape(e) {
+    if (e.key === 'Escape') {
+        const modal = document.getElementById("myModal");
+        const sidebar = document.getElementById("sidebar");
+
+        // Fermer la modal si elle est ouverte
+        if (modal.style.display === "block") {
+            closeModal();
+        }
+
+        // Fermer la sidebar si elle est ouverte
+        if (sidebar.style.display === "flex") {
+            closeSidebar();
+        }
+    }
+    console.log(e.key)
 }
