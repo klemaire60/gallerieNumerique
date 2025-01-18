@@ -283,50 +283,59 @@ footer p {
     text-align: center;
 }
 
-.uploadForm * {
+.uploadForm , 
+.createUserForm,
+.uploadForm *, 
+.createUserForm * {
     background-color: #f9f9f9;
 }
 
-.uploadForm {
+.uploadForm,
+.createUserForm {
     width: 400px;
     height: fit-content;
     margin: 30px auto;
     padding: 20px;
     border: 2px solid #ccc;
     border-radius: 10px;
-    background-color: #f9f9f9;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     display: none;
     flex-direction: column;
     gap: 15px;
 }
 
-.uploadForm legend {
+.uploadForm fieldset,
+.createUserForm fieldset {
+    border: none;
+}
+
+.uploadForm legend,
+.createUserForm legend {
     font-size: 1.4em;
     font-weight: bold;
     margin-bottom: 10px;
     color: #333;
 }
 
-.uploadForm .radio-group {
+.radio-group {
     display: flex;
     align-items: center;
     gap: 10px;
 }
 
-.uploadForm input[type="radio"] {
+.radio-group input[type="radio"] {
     margin: 0;
     accent-color: #007BFF;
     cursor: pointer;
 }
 
-.uploadForm label {
+.radio-group label {
     font-size: 1em;
     color: #555;
     cursor: pointer;
 }
 
-.uploadForm input[type="file"] {
+input[type="file"] {
     margin-top: 10px;
     padding: 10px;
     border: 1px solid #ccc;
@@ -337,7 +346,7 @@ footer p {
     width: 100%;
 }
 
-.uploadForm input[type="file"]::file-selector-button {
+input[type="file"]::file-selector-button {
     background-color: #007BFF;
     color: #fff;
     border: none;
@@ -347,58 +356,11 @@ footer p {
     cursor: pointer;
 }
 
-.uploadForm input[type="file"]::file-selector-button:hover {
+input[type="file"]::file-selector-button:hover {
     background-color: #0056b3;
 }
 
-.uploadForm button {
-    width: 45%;
-}
-
-.button-group {
-    display: flex;
-    justify-content: space-between;
-    gap: 10px;
-}
-
-.backButton:hover, 
-.sendButton:hover {
-    background-color: #111;
-    color: #f9f9f9;
-    cursor: pointer;
-}
-
-.createUserForm {
-    width: 400px;
-    height: fit-content;
-    margin: 30px auto;
-    padding: 20px;
-    border: 2px solid #ccc;
-    border-radius: 10px;
-    background-color: #f9f9f9;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    display: none;
-    flex-direction: column;
-    gap: 15px;
-}
-
-.createUserForm * {
-    background-color: #f9f9f9;
-}
-
-.createUserForm legend {
-    font-size: 1.4em;
-    font-weight: bold;
-    margin-bottom: 10px;
-    color: #333;
-}
-
-.createUserForm label {
-    font-size: 1em;
-    color: #555;
-}
-
-.createUserForm input[type="text"] {
+input[type="text"] {
     padding: 10px;
     font-size: 1em;
     border: 1px solid #ccc;
@@ -406,14 +368,15 @@ footer p {
     width: 100%;
 }
 
-.createUserForm .button-group {
+.button-group {
     display: flex;
     justify-content: space-between;
     gap: 10px;
+    margin-top: 10px;
 }
 
-.createUserForm .backButton,
-.createUserForm .sendButton {
+button.backButton,
+button.sendButton {
     width: 45%;
     padding: 10px 15px;
     border: none;
@@ -424,7 +387,7 @@ footer p {
     background-color: #007BFF;
 }
 
-.createUserForm .backButton:hover,
-.createUserForm .sendButton:hover {
+button.backButton:hover,
+button.sendButton:hover {
     background-color: #0056b3;
 }

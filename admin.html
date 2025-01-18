@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gallerie Numerique</title>
+    <title>Galerie Numérique</title>
     <link rel="stylesheet" href="./styles.css">
 </head>
 <body>
@@ -19,43 +19,51 @@
     </header>
     <div class="sidebar" id="sidebar">
         <a class="sideBarText" onclick="closeSidebar()" href="./index.html">Revenir à l'accueil</a>
-        <a class="sideBarText" onclick="closeSidebar(), logout()">Déconnexion</a>
+        <a class="sideBarText" onclick="closeSidebar(); logout()">Déconnexion</a>
     </div>
     <div class="overlay" id="overlay" onclick="closeSidebar()"></div>
     
-    <div class="admin-box" >
+    <div class="admin-box">
         <div class="admin-choices" id="uploadImagesChoice" onclick="displayMenu('upload')">Ajouter un nouveau dessin</div>
         <div class="admin-choices" id="createUserChoice" onclick="displayMenu('user')">Créer un nouvel utilisateur</div>
-        <div class="uploadForm" id="uploadForm">
-            <legend>Quelle est la catégorie de ce que vous ajoutez ?</legend>
-            <div class="radio-group">
-                <input type="radio" id="numericArtChoice" name="artType" value="numericArt">
-                <label for="numericArtChoice">Art Numérique</label>
-            </div>
-            <div class="radio-group">
-                <input type="radio" id="drawingChoice" name="artType" value="drawing">
-                <label for="drawingChoice">Dessin</label>
-            </div>
-            <input type="file" id="artFile" name="artFile" accept="image/*" multiple>
-            <div class="button-group">
-                <button class="backButton" onclick="back()">Retour</button>
-                <button class="sendButton" onclick="sendForm('upload')">Envoyer</button>
-            </div>
-            <p class="responseText" id="responseText"></p>
-        </div>
         
-        <div class="createUserForm" id="createUserForm">
-            <legend>Entrez les informations du nouvel utilisateur à créer</legend>
-            <label for="username"><b>Nom d'utilisateur</b></label>
-            <input type="text" name="username">
-            <label for="password"><b>Mot de passe</b></label>
-            <input type="text" name="password">
-            <div class="button-group">
-                <button class="backButton" onclick="back()">Retour</button>
-                <button class="sendButton" onclick="sendForm('user')">Envoyer</button>
-            </div>
-        </div>
+        <!-- Formulaire pour l'upload -->
+        <form class="uploadForm" id="uploadForm" onsubmit="sendForm('upload'); return false;">
+            <fieldset>
+                <legend>Quelle est la catégorie de ce que vous ajoutez ?</legend>
+                <div class="radio-group">
+                    <input type="radio" id="numericArtChoice" name="artType" value="numericArt">
+                    <label for="numericArtChoice">Art Numérique</label>
+                </div>
+                <div class="radio-group">
+                    <input type="radio" id="drawingChoice" name="artType" value="drawing">
+                    <label for="drawingChoice">Dessin</label>
+                </div>
+                <input type="file" id="artFile" name="artFile" accept="image/*" multiple>
+                <div class="button-group">
+                    <button type="button" class="backButton" onclick="back()">Retour</button>
+                    <button type="submit" class="sendButton">Envoyer</button>
+                </div>
+                <p class="responseText" id="responseText"></p>
+            </fieldset>
+        </form>
+        
+        <!-- Formulaire pour la création d'utilisateur -->
+        <form class="createUserForm" id="createUserForm" style="display: none;" onsubmit="sendForm('user'); return false;">
+            <fieldset>
+                <legend>Entrez les informations du nouvel utilisateur à créer</legend>
+                <label for="username"><b>Nom d'utilisateur</b></label>
+                <input type="text" id="username" name="username">
+                <label for="password"><b>Mot de passe</b></label>
+                <input type="text" id="password" name="password">
+                <div class="button-group">
+                    <button type="button" class="backButton" onclick="back()">Retour</button>
+                    <button type="submit" class="sendButton">Envoyer</button>
+                </div>
+            </fieldset>
+        </form>
     </div>
+    
     <footer>
         <p>&copy; 2024 Jus <img class="emoji" src="sprites/jusDePomme.png" alt="Emoji jus de Pomme"></p>
         <p>Développé par Kactus</p>
