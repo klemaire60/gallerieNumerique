@@ -3,7 +3,7 @@ const passwordLabel = document.getElementById('login-password');
 const button = document.getElementById('login-button');
 const responseDiv = document.getElementById('responseDiv');
 
-button.addEventListener('click', async (event) => {
+async function sendLogin() {
     const username = usernameLabel.value;
     const password = passwordLabel.value;
     
@@ -29,6 +29,11 @@ button.addEventListener('click', async (event) => {
     } catch (error) {
         console.error('Erreur lors de la requête de connexion : \n', error);
     }
+}
+
+button.addEventListener('click', sendLogin);
+document.addEventListener('keydown', (e) => {
+    if(e.key === 'Enter' && usernameLabel.value !== '' && passwordLabel.value !== '') sendLogin();
 })
 
 function showSidebar() {
