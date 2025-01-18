@@ -185,7 +185,6 @@ footer p {
     width: 100%;
 }
 
-/* Sidebar */
 .sidebar {
     position: fixed;
     top: 0;
@@ -197,7 +196,7 @@ footer p {
     display: none;
     flex-direction: column;
     padding: 20px;
-    transition: left 0.3s ease; /* Transition pour le mouvement */
+    transition: left 0.3s ease;
     z-index: 1000;
 }
 
