@@ -129,6 +129,15 @@ app.post('/login', (req, res) => {
     })
 })
 
+app.get('/logout', (req, res) => {
+    res.clearCookie('userToken', {
+        httpOnly: true,
+        secure: false,
+        sameSite: 'Lax',
+    });
+    return res.status(200).json({ message: 'Déconnexion réussie' });
+});
+
 app.get('/images', async (req, res) => {
     const view = req.query.view;
     try {
@@ -182,7 +191,7 @@ app80.get('/login.html', (req, res) => {
 
 app80.get('/admin.html', (req, res) => {
     const userToken = req.cookies.userToken;
-    
+
     if(!userToken) return res.redirect('/login.html');
     
     if(!verifyToken(userToken)) return res.redirect('/login.html');

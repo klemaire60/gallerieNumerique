@@ -20,7 +20,7 @@ function displayMenu(type) {
 
 function sendForm(type) {
     const responseText = document.getElementById('responseText');
-
+    
     if(type == "upload")
         {
         const form = document.getElementById(formType + 'Form');
@@ -34,7 +34,7 @@ function sendForm(type) {
         
         formData.append('artType', artType.value);
         
-        fetch('/path/to/your/api/endpoint', {
+        fetch('/uploadImages', {
             method: 'POST',
             body: formData,
         })
@@ -55,7 +55,7 @@ function sendForm(type) {
         });
     } 
     else if(type == 'user')
-    {
+        {
         
     }
 }
@@ -68,25 +68,35 @@ function back() {
     createUserForm.style.display = "none";
 }
 
-function disconnect() {
-    document.cookie = `userToken=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;`;
-}
+async function logout() {
+    try {
+        const logoutUrl = `${window.location.protocol}//${window.location.hostname}:3000/logout`;
+        const response = await fetch(logoutUrl, {
+                method: 'GET',
+                credentials: 'include'
+            });
+        const data = await response.json();
+        window.location.href = '/index.html';
+    } catch (error) {
+        console.error('Erreur lors de la déconnexion :', error);
+    }
+};
 
 function showSidebar() {
     const sidebar = document.getElementById("sidebar");
     const overlay = document.getElementById("overlay");
-
+    
     // Afficher la sidebar et l'overlay
     sidebar.style.display = 'flex';
     overlay.style.display = 'block';
-
+    
     document.addEventListener('keydown', handleEscape);
 }
 
 function closeSidebar() {
     const sidebar = document.getElementById("sidebar");
     const overlay = document.getElementById("overlay");
-
+    
     // Masquer la sidebar et l'overlay
     sidebar.style.display = 'none';
     overlay.style.display = 'none';

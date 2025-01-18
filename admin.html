@@ -5,8 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gallerie Numerique</title>
     <link rel="stylesheet" href="./styles.css">
-    <!--Lien temporaire Live server-->
-    <link rel="stylesheet" href="./public/styles.css">
 </head>
 <body>
     <header>
@@ -21,7 +19,7 @@
     </header>
     <div class="sidebar" id="sidebar">
         <a class="sideBarText" onclick="closeSidebar()" href="./index.html">Revenir à l'accueil</a>
-        <a class="sideBarText" onclick="closeSidebar(), disconnect()">Déconnexion</a>
+        <a class="sideBarText" onclick="closeSidebar(), logout()">Déconnexion</a>
     </div>
     <div class="overlay" id="overlay" onclick="closeSidebar()"></div>
     
@@ -63,6 +61,5 @@
         <p>Développé par Kactus</p>
     </footer>
     <script src="admin.js"></script>
-    <script src="./public/admin.js"></script>
 </body>
 </html>
